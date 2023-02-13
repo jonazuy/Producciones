@@ -16,7 +16,11 @@
         <img src="https://cdn.icon-icons.com/icons2/1146/PNG/512/1486485588-add-create-new-math-sign-cross-plus_81186.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
         Selector de producciones
       </a>
+      <div class="colores" id="imprimir">
+        <p></p>
+      </div>
     </div>
+   
   </nav>
     <div class="formulario mt-5   row  justify-content-center ">
 
@@ -48,7 +52,7 @@
             <h5 class="card-header  text-center">Informacion Produccion </h5>
             <div class="card-body">
               <h5 class="h6 text-center" id="infoProd">Nada por el momento</h5>
-              <button  id="btnProduct" class="btn btn-outline-success btn-sm justify-content-center">Enviar datos produccion</button>
+              <button  id="btnProduct"  class="btn btn-outline-success btn-sm justify-content-center">Enviar datos produccion</button>
               
               
             </div>
@@ -64,19 +68,24 @@
 
 
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title text-center" id="staticBackdropLabel">Ingrese Credenciales</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="input-group">
+          <span class="input-group-text">Nombre</span>
+          <input id="persona" type="text"  aria-label="First name" class="form-control">
+          <span class="input-group-text">Horario</span>
+          <input id="horario" type="text" aria-label="First name" class="form-control">
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="submit" id="btnIngreso" class="btn btn-secondary" data-bs-dismiss="">Ingresar!</button>
+        
       </div>
     </div>
   </div>
@@ -84,6 +93,19 @@
 
 
     <!-- Modal Fin -->
+
+
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"
+  ></script>
 
 
     <script src="/app.js"></script>
