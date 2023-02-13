@@ -3,13 +3,15 @@
 
 //Variables
 const tipoSal = document.querySelector('#tipos')
-const cantidad = parseInt(document.querySelector('#cantidad'))
+const cantidad = parseInt(document.querySelector('#cantidad').value)
 
 const btnAgregar = document.querySelector('#btnAgregar')
 const infoProd = document.querySelector('#infoProd')
 const formAdd= document.querySelector('#formAdd')
 let producciones = []
 mensaje()
+detectarTipo()
+detectarCantidad()
 
 cargarEventListeners()
 
@@ -24,6 +26,10 @@ infoProd.addEventListener('click', eliminarProd)
 
 function agregarProd(e){
     
+  
+  detectarCantidad()
+detectarTipo()
+  
      e.preventDefault()
      
     if(e.target.classList.contains('btnAgregar')){
@@ -32,7 +38,8 @@ const produccionSeleccionada = e.target.parentElement
 leerDatos(produccionSeleccionada)
   
 produccionSeleccionada.reset()
-   
+detectarCantidad()
+detectarTipo()
 }}
 
 
@@ -182,3 +189,25 @@ function mensaje(){
 }
 
  
+function detectarTipo(){
+
+  if (tipoSal.value === "Seleccione un tipo" ){
+    btnAgregar.disabled = true
+  }else{
+    btnAgregar.disabled = false
+  }
+
+ 
+}
+
+
+
+function detectarCantidad(){
+  if(document.querySelector('#cantidad').value === "" ){
+    btnAgregar.disabled = true
+  }else{
+    btnAgregar.disabled = false
+  }
+}
+
+
