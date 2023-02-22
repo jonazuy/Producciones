@@ -10,3 +10,7 @@ body{
 
     color: aliceblue!important;
 }
+
+.entrada{
+    display: inline-block;
+}

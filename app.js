@@ -7,7 +7,7 @@ const cantidad = parseInt(document.querySelector('#cantidad').value)
 const btnAgregar = document.querySelector('#btnAgregar')
 const infoProd = document.querySelector('#infoProd')
 const formAdd= document.querySelector('#formAdd')
-
+const btnEnviar =document.querySelector("#btnProduct")
 const userHtml = document.querySelector("#imprimir")
 const btnIngresar = document.querySelector("#btnIngreso")
 
@@ -20,7 +20,7 @@ detectarCantidad()
 cargarEventListeners()
 
 function cargarEventListeners(){
- 
+btnEnviar.addEventListener("click",pdf)
 formAdd.addEventListener('click' , agregarProd)
 infoProd.addEventListener('click', eliminarProd)
 document.addEventListener("DOMContentLoaded", () => {
@@ -33,15 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let datosLS = JSON.parse(localStorage.getItem("tareas")) || [];
 producciones = datosLS;
+
+
+
+
 //FUNCIONES
-
-
-  
-
 
 var myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {});
 document.onreadystatechange = function () {
-  myModal.show();
+  myModal.show() ;
 };
 
 
@@ -133,8 +133,15 @@ if(existe){
  
 }else{
     producciones = [...producciones , infoProd]
+
+
 }
 
+
+
+
+
+     
 
 
 mensaje()
@@ -162,17 +169,17 @@ function produccionHTML(){
         let palletP =produccion.cantidad +"bolsas"
         if(produccion.cantidad===56){
         palletE
-        console.log("si")
+       
         }else{
           palletP
-          console.log("no")
+          
         }
         row.innerHTML=`
 
 
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3 " style="max-width: 540px;">
   <div class="row g-0">
-    <div class="col-md-4">
+    <div class="col-md-4 ">
     <img src="${produccion.imagen}"  class="img-fluid align-items-center">
     </div>
     <div class="col-md-8">
@@ -194,8 +201,12 @@ function produccionHTML(){
 
         `
         
-infoProd.appendChild(row)
+       
 
+
+
+
+infoProd.appendChild(row)
 
 
     
@@ -263,27 +274,72 @@ btnIngresar.addEventListener("click" , users)
   let user = document.querySelector("#persona")
 
 function users (){
-  
+ 
   let horario = document.querySelector("#horario")
-  userHtml.innerHTML = `
-   Operario: ${user.value} - Turno: ${horario.value}
+  let usuarios=  `Operario: ${user.value} - Turno: ${horario.value}`
+  localStorage.setItem("usuarios", usuarios)
+  let users= localStorage.getItem("usuarios")
+  userHtml.innerHTML =users
   
-  
-  `
-  
-  myModal.hide()
 
-  
-console.log(user.value)
+    myModal.hide()
 
-
-}
-
-function detectarModal(){
-  while (userHtml) {
-    myModal.show()
   }
+
   
+
   
+
+
+
+
+
+
+
+
+
+function pdf(){
+// crea un nuevo objeto `Date`
+var today = new Date();
+ 
+// obtener la fecha y la hora
+var now = today.toLocaleString();
+console.log(now);
+  
+
+
+
+
+var doc = new jsPDF('p', 'pt', 'letter')
+doc.text(240, 20, "Reporte de Produccion ");
+doc.setFontSize(8)
+doc.text(10, 780,"Generado el :" + now);
+
+var col = ["Descripcion", "Cantidad",]
+  row = []
+  
+  for (let i = 0; i < producciones.length; i++){
+    var temp = [producciones[i].tipo, producciones[i].cantidad, ] 
+    row.push(temp)
+    ;
+
+ }
+  
+ doc.autoTable(col,row, {startY:40});
+ 
+
+
+
+
+
+// save the data to this f    
+
+  // Output as Data URI
+  doc.save('ReporteProduccion.pdf');
+
+
+
+
+
   
 }
